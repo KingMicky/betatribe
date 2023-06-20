@@ -15,10 +15,9 @@ pipeline {
         stage('Build docker image') {
             steps {
                 script {
-                    sh 'docker build -t bit3down/kubernetes .'
+                    sh 'docker build -t alphatribe/kubernetes .'
                 }
             }
-        }
         
         stage('Push image to hub') {
             steps {
@@ -27,9 +26,10 @@ pipeline {
                         usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')
                     ]) {
                         sh 'docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD'
-                        sh 'docker push bit3down/kubernetes'
+                        sh 'docker push alphatribe/kubernetes'
                     }
                 }
+
         }
         stage('Deploy to K8s'){
             steps{
