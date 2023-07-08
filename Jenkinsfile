@@ -19,18 +19,15 @@ pipeline {
                 }
             }
         }
-        
-        stage('Push image to hub') {
-            steps {
-                script {
-                    withCredentials([
-                        usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')
-                    ]) {
-                        sh 'docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD'
-                        sh 'docker push alphatribe/kubernetes'
+        stage('Push image to hub'){
+            steps{
+                script{
+                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u suresh394 -p ${dockerhubpwd}'
+                        
                     }
                 }
-            }
+
         }
     }
 }
