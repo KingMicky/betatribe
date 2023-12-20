@@ -5,7 +5,7 @@ on:
         branches: ['master']
     
 jobs:
-    build:
+    push-to-registry:
         name: Push Docker image to DockerHub
         runs-on: ubuntu-latest
 
