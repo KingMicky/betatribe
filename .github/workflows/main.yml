@@ -1,0 +1,4 @@
+name: publish of docker image
+
+on: 
+push: []
