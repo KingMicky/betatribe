@@ -29,6 +29,6 @@ jobs:
               uses: docker/build-push-action@v2
               with:
                     push: true
-                    tags: ${{ secrets.DOCKER_USERNAME }}/hello-world:latest
+                    tags: ${{ secrets.DOCKER_USERNAME }}/testjavaapp:${{ steps.meta.outputs.tags }}
                     context: .
                     file: ./Dockerfile
